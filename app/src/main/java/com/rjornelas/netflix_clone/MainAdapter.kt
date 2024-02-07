@@ -3,7 +3,7 @@ package com.rjornelas.netflix_clone
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.rjornelas.netflix_clone.model.Movie
 
@@ -25,8 +25,8 @@ class MainAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<MainAd
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bind(movie: Movie){
-            val txtTest: TextView = itemView.findViewById(R.id.txt_test)
-            txtTest.text = movie.coverURL
+            val imageCover: ImageView = itemView.findViewById(R.id.iv_movie)
+            imageCover.setImageResource(movie.coverURL)
         }
     }
 
