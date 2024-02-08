@@ -26,4 +26,80 @@
         app:titleTextColor="@color/white"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="@+id/movie_img"
+        app:layout_constraintEnd_toEndOf="@+id/movie_img"
+        app:layout_constraintStart_toStartOf="@+id/movie_img"
+        app:layout_constraintTop_toTopOf="@+id/movie_img" />
+
+    <TextView
+        android:id="@+id/movie_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Movie title"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/movie_img"
+        app:layout_constraintStart_toStartOf="@+id/movie_img"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="22sp" />
+
+    <TextView
+        android:id="@+id/txt_movie_synopsis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lineSpacingExtra="3dp"
+        android:maxLines="3"
+        tools:text="@string/synopsis"
+        android:textColor="@color/light_gray"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/movie_img"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="48dp"/>
+
+    <TextView
+        android:id="@+id/txt_cast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lineSpacingExtra="3dp"
+        android:maxLines="3"
+        tools:text="@string/cast"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_movie_synopsis"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="48dp"/>
+
+    <TextView
+        android:id="@+id/other_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Similar options"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_cast"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="48dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/other_options"
+        android:layout_marginTop="16dp"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

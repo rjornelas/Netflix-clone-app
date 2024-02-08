@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Netflix-clone</string>
+    <string name="cast">Elenco: %1$s</string>
+    <string name="synopsis">Lorem ipsum dolor sit amet. In quia dolorem id quas dolorum quo commodi laborum cum odit tempore qui quia dolores et dolore odio? Et voluptas sint et porro nemo sed rerum voluptate ut sint doloribus. Et minus autem eum libero voluptatum quo error recusandae cum asperiores voluptatem ad placeat assumenda aut consequatur consequatur?</string>
 </resources>
