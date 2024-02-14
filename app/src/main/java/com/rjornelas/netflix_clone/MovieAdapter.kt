@@ -3,6 +3,7 @@ package com.rjornelas.netflix_clone
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +12,8 @@ import com.squareup.picasso.Picasso
 
 class MovieAdapter(
     private val movies: List<Movie>,
-    @LayoutRes private val layoutId: Int
+    @LayoutRes private val layoutId: Int,
+    private val onItemClickListener: ( (Long) -> Unit)? = null
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -31,6 +33,9 @@ class MovieAdapter(
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bind(movie: Movie){
             val imageCover: ImageView = itemView.findViewById(R.id.iv_movie)
+            imageCover.setOnClickListener{
+                onItemClickListener?.invoke(movie.id)
+            }
             Picasso.get().load(movie.coverUrl).into(imageCover)
         }
     }

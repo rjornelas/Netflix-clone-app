@@ -1,5 +1,6 @@
 package com.rjornelas.netflix_clone
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -23,7 +24,11 @@ class MainActivity : AppCompatActivity(), CategoryTask.Callback {
 
         progressBar = findViewById(R.id.pb_main)
 
-        adapter = CategoryAdapter(categories)
+        adapter = CategoryAdapter(categories){ id ->
+            val intent = Intent(this@MainActivity, MovieActivity::class.java)
+            intent.putExtra("id", id)
+            startActivity(intent)
+        }
         val rv: RecyclerView = findViewById(R.id.rv_main)
         rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rv.adapter = adapter
