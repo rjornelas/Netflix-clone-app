@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.rjornelas.netflix_clone.model.Movie
+import com.squareup.picasso.Picasso
 
 class MovieAdapter(
     private val movies: List<Movie>,
@@ -30,9 +31,7 @@ class MovieAdapter(
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bind(movie: Movie){
             val imageCover: ImageView = itemView.findViewById(R.id.iv_movie)
-
-            //TODO -> trocar por url recebida pelo servidor
-//            imageCover.setImageResource(movie.coverURL)
+            Picasso.get().load(movie.coverUrl).into(imageCover)
         }
     }
 

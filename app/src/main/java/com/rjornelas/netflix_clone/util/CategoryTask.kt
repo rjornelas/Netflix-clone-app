@@ -36,7 +36,7 @@ class CategoryTask(private val callback: Callback) {
             try {
                 val requestUrl = URL(url)
                 urlConnection = requestUrl.openConnection() as HttpsURLConnection
-                urlConnection.readTimeout = 2000
+                urlConnection.readTimeout = 20000
                 urlConnection.connectTimeout = 2000
 
                 val statusCode = urlConnection.responseCode
