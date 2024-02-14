@@ -11,7 +11,7 @@ import com.rjornelas.netflix_clone.model.Category
 
 class CategoryAdapter(
     private val categories: List<Category>,
-    private val onItemClickListener: ((Long) -> Unit)
+    private val onItemClickListener: ((Int) -> Unit)
 ) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {

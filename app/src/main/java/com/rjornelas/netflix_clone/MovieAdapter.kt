@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 class MovieAdapter(
     private val movies: List<Movie>,
     @LayoutRes private val layoutId: Int,
-    private val onItemClickListener: ( (Long) -> Unit)? = null
+    private val onItemClickListener: ( (Int) -> Unit)? = null
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
