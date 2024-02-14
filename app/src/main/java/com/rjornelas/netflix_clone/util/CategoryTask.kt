@@ -1,5 +1,7 @@
 package com.rjornelas.netflix_clone.util
 
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import com.rjornelas.netflix_clone.model.Category
 import com.rjornelas.netflix_clone.model.Movie
@@ -12,10 +14,18 @@ import java.net.URL
 import java.util.concurrent.Executors
 import javax.net.ssl.HttpsURLConnection
 
-class CategoryTask {
+class CategoryTask(private val callback: Callback) {
+
+    private val handler = Handler(Looper.getMainLooper())
+
+    interface Callback {
+        fun onResult(categories: List<Category>)
+        fun onFailure(message: String)
+        fun onPreExecute()
+    }
 
     fun execute(url: String){
-
+        callback.onPreExecute()
         val executor = Executors.newSingleThreadExecutor()
 
         executor.execute{
@@ -49,11 +59,17 @@ class CategoryTask {
                 Log.i("Teste", jsonAsString)
 
                 val categories = toCategories(jsonAsString)
-                Log.i("Teste", categories.toString())
 
+                handler.post {
+                    callback.onResult(categories)
+                }
 
             }catch (ex: IOException){
-                Log.e("Teste", ex.message ?: "erro desconhecido", ex)
+                val message = ex.message ?: "erro desconhecido"
+                Log.e("Teste", message, ex)
+                handler.post {
+                    callback.onFailure(message)
+                }
             }finally {
                 urlConnection?.disconnect()
                 stream?.close()
