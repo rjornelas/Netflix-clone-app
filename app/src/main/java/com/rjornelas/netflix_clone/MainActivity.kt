@@ -14,15 +14,16 @@ import com.rjornelas.netflix_clone.util.CategoryTask
 class MainActivity : AppCompatActivity(), CategoryTask.Callback {
 
     private lateinit var progressBar: ProgressBar
+    private val categories = mutableListOf<Category>()
+    private lateinit var adapter: CategoryAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         progressBar = findViewById(R.id.pb_main)
 
-        val categories = mutableListOf<Category>()
-
-        val adapter = CategoryAdapter(categories)
+        adapter = CategoryAdapter(categories)
         val rv: RecyclerView = findViewById(R.id.rv_main)
         rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rv.adapter = adapter
@@ -31,7 +32,11 @@ class MainActivity : AppCompatActivity(), CategoryTask.Callback {
     }
 
     override fun onResult(categories: List<Category>) {
-        Log.i("Teste MainActivity", categories.toString())
+        this.categories.clear()
+        this.categories.addAll(categories)
+
+        adapter.notifyDataSetChanged()
+
         progressBar.visibility = View.GONE
     }
 
